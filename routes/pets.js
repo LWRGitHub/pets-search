@@ -117,6 +117,4 @@ module.exports = (app) => {
     })
   });
 
-
-
 }
