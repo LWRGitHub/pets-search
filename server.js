@@ -54,13 +54,13 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-// // auth with our mailgun API key and domain
-// const auth = {
-//   auth: {
-//     api_key: process.env.MAILGUN_API_KEY,
-//     domain: process.env.EMAIL_DOMAIN
-//   }
-// }
+// auth with our mailgun API key and domain
+const auth = {
+  auth: {
+    api_key: process.env.MAILGUN_API_KEY,
+    domain: process.env.EMAIL_DOMAIN
+  }
+}
 
 // // create a mailer
 // const nodemailerMailgun = nodemailer.createTransport(mg(auth));
@@ -72,20 +72,20 @@ const user = {
   age: '43'
 };
 
-// nodemailerMailgun.sendMail({
-//   from: 'no-reply@example.com',
-//   to: user.email, // An array if you have multiple recipients.
-//   subject: 'Hey you, awesome!',
-//   template: {
-//     name: 'email.handlebars',
-//     engine: 'handlebars',
-//     context: user
-//   }
-// }).then(info => {
-//   console.log('Response: ' + info);
-// }).catch(err => {
-//   console.log('Error: ' + err);
-// });
+nodemailerMailgun.sendMail({
+  from: 'no-reply@example.com',
+  to: user.email, // An array if you have multiple recipients.
+  subject: 'Hey you, awesome!',
+  template: {
+    name: 'email.handlebars',
+    engine: 'handlebars',
+    context: user
+  }
+}).then(info => {
+  console.log('Response: ' + info);
+}).catch(err => {
+  console.log('Error: ' + err);
+});
 
 app.locals.PUBLIC_STRIPE_API_KEY = process.env.PUBLIC_STRIPE_API_KEY
 
